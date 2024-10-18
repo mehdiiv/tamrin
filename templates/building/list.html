@@ -1,0 +1,46 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>building list</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">creator</th>
+        <th scope="col">built year</th>       
+        <th scope="col">room number</th>
+        <th scope="col">area</th>
+        <th scope="col">floors</th>
+        <th scope="col">Colour</th>
+        <th scope="col">created at</th>
+        <th scope="col">actions</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>        
+
+
+      </tr>
+    </thead>
+    <tbody>
+           {%for building in objects%}
+      <tr>
+        <th scope="row">{{building.id}}</th>
+        <td>{{building.creator}}</td>
+        <td>{{building.built_year}}</td>
+        <td>{{building.room_number}}</td>
+        <td>{{building.area}}</td>
+        <td>{{building.floors}}</td>
+        <td>{{building.Colour}}</td>
+        <td>{{building.created_at}}</td>
+        <td><a href="{% url 'building_delete' building.id %}" class="btn btn-danger">delete</a></td>
+        <td><a href="{% url 'building_update' building.id %}" class="btn btn-warning">edit</a> </td>
+        <td scope="row"><a href="{% url 'building_detail' building.id %}" class="btn btn-success">show</a></td>
+        <td scope="row"><a href="{% url 'send_email' %}" class="btn btn-primary">send sample email</a></td>        
+      </tr>
+      {% endfor %}
+
+         </tbody>
+  </table>
+  {% endblock content %}
