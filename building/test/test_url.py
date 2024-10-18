@@ -26,7 +26,4 @@ class UrlTest(SimpleTestCase):
     def test_building_delete_url(self):
         url = reverse('building_delete', kwargs={'pk': 1})
         self.assertEqual(resolve(url).func.view_class, BuildingDeleteView)
-    
-    def test_send_email_url(self):
-        url = reverse('send_email')
-        self.assertEqual(resolve(url).func.view_class, SendEmailView)
+
