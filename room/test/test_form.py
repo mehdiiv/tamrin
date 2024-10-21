@@ -10,37 +10,21 @@ class RoomFormTest(TestCase):
         })
         self.assertTrue(form.is_valid())
 
-    def test_Building_form_invalid_data(self):
-        form = RoomForm(
-            {'area' : 123,
-            'capacity' : 53,
-            'room_name' : 'bath',
-        })
-        self.assertFalse(form.is_valid())
-
-    def test_Building_form_invalid_data(self):
-        form = RoomForm(
-            {'area' : 123,
-            'capacity' : 53,
-            'room_name' : 'bath',
-        })
-        self.assertFalse(form.is_valid())
-
-    def test_Building_form_invalid_data(self):
+    def test_Building_form_invalid_data_without_area(self):
         form = RoomForm(
             {'capacity' : 53,
             'room_name' : 'bath',
         })
         self.assertFalse(form.is_valid())
     
-    def test_Building_form_invalid_data(self):
+    def test_Building_form_invalid_data_without_capacity(self):
         form = RoomForm(
             {'area' : 123,
             'room_name' : 'bath',
         })
         self.assertFalse(form.is_valid())
     
-    def test_Building_form_invalid_data(self):
+    def test_Building_form_invalid_data_without_room_name(self):
         form = RoomForm(
             {'area' : 123,
             'capacity' : 53,

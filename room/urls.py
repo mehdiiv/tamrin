@@ -10,7 +10,7 @@ class HomeView(TemplateView):
         return render(request, 'home.html')
 
 urlpatterns = [
-    path('', RoomListView.as_view(), name = 'rooms_list'),
+    path('', RoomsListView.as_view(), name = 'rooms_list'),
     path('create/', RoomCreateView.as_view(), name = 'room_create'),
     path('<int:room_pk>/', RoomDetailView.as_view(), name = 'room_detail'),
 ]
