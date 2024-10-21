@@ -15,14 +15,14 @@ class RoomModelTest(TestCase):
                 Colour = 'yellow',                 
         )
         self.room = Room.objects.create(
-            room_building = self.building,
+            building = self.building,
             room_name = 'testroom',
             area = '15',
             capacity = '1'
         )
 
     def test_room_creation(self):
-        self.assertEqual(self.room.room_building, self.building)
+        self.assertEqual(self.room.building, self.building)
         self.assertEqual(self.room.area, '15')
         self.assertEqual(self.room.room_name, 'testroom')
         self.assertEqual(self.room.capacity, '1')

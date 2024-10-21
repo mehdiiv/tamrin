@@ -8,7 +8,7 @@ from room.models import Room
 class RequiredLoginView(LoginRequiredMixin, TemplateView):
    pass
 
-class RoomListView(RequiredLoginView):
+class RoomsListView(RequiredLoginView):
     template_name = 'room/list.html'
     
     def get(self, request, pk):
