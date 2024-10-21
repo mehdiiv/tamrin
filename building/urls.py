@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from django.views.generic import TemplateView
 from django.shortcuts import render
 from building.views import *
@@ -10,6 +10,7 @@ class HomeView(TemplateView):
         return render(request, 'home.html')
 
 urlpatterns = [
+    path('<int:pk>/room/', include('room.urls')),
     path('create/', BuildingCreateView.as_view(), name='building_create'),
     path('', BuildingListView.as_view(), name= 'building_list'),
     path('<int:pk>/', BuildingDetailView.as_view(), name='building_detail'),

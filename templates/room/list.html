@@ -1,0 +1,33 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>room list</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">building</th>
+        <th scope="col">room name</th>       
+        <th scope="col">area</th>
+        <th scope="col">floors</th>
+        <th scope="col">created at</th>      
+
+
+      </tr>
+    </thead>
+    <tbody>
+           {%for room in objects%}
+      <tr>
+        <th scope="row">{{room.id}}</th>
+        <td>{{room.building}}</td>
+        <td>{{room.room_name}}</td>
+        <td>{{room.area}}</td>
+        <td>{{room.capacity}}</td>
+        <td>{{room.created_at}}</td>     
+      </tr>
+      {% endfor %}
+
+         </tbody>
+  </table>
+  {% endblock content %}
