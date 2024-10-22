@@ -11,7 +11,9 @@
             <th scope="col">room name</th>       
             <th scope="col">area</th>
             <th scope="col">floors</th>
-            <th scope="col">created at</th>      
+            <th scope="col">created at</th>
+            <th scope="col">delete</th>
+            <th scope="col">edit</th>      
     
     
           </tr>
@@ -23,7 +25,9 @@
             <td>{{room.room_name}}</td>
             <td>{{room.area}}</td>
             <td>{{room.capacity}}</td>
-            <td>{{room.created_at}}</td>     
+            <td>{{room.created_at}}</td>
+            <td><a href="{% url 'room_delete'  room.building.id room.id %}" class="btn btn-danger">delete</a></td>
+            <td><a href="{% url 'room_update'  room.building.id  room.id %}" class="btn btn-warning">edit</a> </td>     
           </tr>
              </tbody>
   </table>

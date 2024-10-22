@@ -18,8 +18,9 @@
         <th scope="col"></th>
         <th scope="col"></th>
         <th scope="col"></th>
-        <th scope="col"></th>        
-
+        <th scope="col"></th>
+        <th scope="col"></th>         
+        <th scope="col"></th>    
 
       </tr>
     </thead>
@@ -37,7 +38,9 @@
         <td><a href="{% url 'building_delete' building.id %}" class="btn btn-danger">delete</a></td>
         <td><a href="{% url 'building_update' building.id %}" class="btn btn-warning">edit</a> </td>
         <td scope="row"><a href="{% url 'building_detail' building.id %}" class="btn btn-success">show</a></td>
-        <td scope="row"><a href="{% url 'send_email' %}" class="btn btn-primary">send sample email</a></td>        
+        <td scope="row"><a href="{% url 'send_email' %}" class="btn btn-primary">send sample email</a></td>
+        <td scope="row"><a href="{% url 'rooms_list' building.id %}" class="btn btn-info">rooms list</a></td>     
+        <td scope="row"><a href="{% url 'room_create' building.id %}" class="btn btn-dark">room create</a></td>      
       </tr>
       {% endfor %}
 
