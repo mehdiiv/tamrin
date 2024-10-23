@@ -50,22 +50,22 @@ class RoomUpdateView(RequiredLoginView):
     template_name = 'room/form.html'
 
     def get(self, request , pk, room_pk ):
-        self.object = get_object_or_404(Room, id = self.kwargs['room_pk'])
+        object = get_object_or_404(Room, pk = room_pk)
         context = {
-            'form' : RoomForm(instance = self.object)
+            'form' : RoomForm(instance = object)
         }
         return render(request, self.template_name, context)
 
     def post(self, request, pk, room_pk):
-       form = RoomForm(request.POST)
-       form.instance.building_id = pk
+       object = get_object_or_404(Room, pk = room_pk)
+       form = RoomForm(request.POST, instance= object)
        if form.is_valid():
-           self.object = form.save()
-           return redirect('room_detail', pk, self.object.id)
+           object = form.save()
+           return redirect('room_detail', pk, object.id)
        return render(request, 'room/form.html', { 'form': form })
 
 class RoomDeleteView(RequiredLoginView):
     def get(self, request, pk, room_pk):
-        self.object = get_object_or_404(Room, id = self.kwargs['room_pk'])
-        self.object.delete()
+        object = get_object_or_404(Room, pk = room_pk)
+        object.delete()
         return redirect('rooms_list', pk)

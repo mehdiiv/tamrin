@@ -38,3 +38,9 @@ class RoomViewTest(TestCase):
   def test_room_create_view(self):
     response = self.client.post(reverse('room_create', kwargs= { 'pk': self.building.id }), { 'area' : '12' ,'capacity' : '53','room_name' : 'testroom'})
     self.assertEqual(response.status_code, 302)
+
+  def test_room_update_view(self):
+        response = self.client.post(reverse('room_update', kwargs={ 'pk': self.building.id ,'room_pk' : self.room.id }), { 'area' : '12' ,'capacity' : '53','room_name' : 'updateroom'})
+        self.assertEqual(response.status_code, 302)
+        self.room.refresh_from_db()
+        self.assertEqual(self.room.room_name, 'updateroom')
