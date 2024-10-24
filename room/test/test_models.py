@@ -12,7 +12,7 @@ class RoomModelTest(TestCase):
                 room_number = '25',
                 area = '123',
                 floors = '3',
-                Colour = 'yellow',                 
+                Colour = 'yellow',
         )
         self.room = Room.objects.create(
             building = self.building,
@@ -28,4 +28,4 @@ class RoomModelTest(TestCase):
         self.assertEqual(self.room.capacity, '1')
 
     def test_building_table_name(self):
-        self.assertEqual(self.room._meta.db_table, 'rooms')    
+        self.assertEqual(self.room._meta.db_table, 'rooms')

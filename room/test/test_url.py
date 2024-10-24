@@ -19,10 +19,10 @@ class UrlTest(SimpleTestCase):
         url = reverse('room_detail',kwargs={'pk': 1,'room_pk' : 1 })
         self.assertEqual(resolve(url).func.view_class, RoomDetailView)
 
-    def test_news_update_url(self):
+    def test_room_update_url(self):
         url = reverse('room_update', kwargs={'pk': 1,'room_pk' : 1 })
         self.assertEqual(resolve(url).func.view_class, RoomUpdateView)
 
-    def test_news_delete_url(self):
+    def test_room_delete_url(self):
         url = reverse('room_delete', kwargs={'pk': 1,'room_pk' : 1 })
         self.assertEqual(resolve(url).func.view_class, RoomDeleteView)
