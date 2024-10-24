@@ -12,14 +12,14 @@ class RequiredLoginView(LoginRequiredMixin, TemplateView):
 
 class BuildingCreateView(RequiredLoginView):
     template_name = 'building/form.html'
-    
+
     def get(self, request):
         return render(request, self.template_name, { 'form' : BuildingForm })
 
     def post(self, request):
       form = BuildingForm(request.POST)
       form.instance.creator = request.user
-      if form.is_valid(): 
+      if form.is_valid():
           object = form.save()
           return redirect('building_detail', object.id)
       return render(request, 'building/form.html', { 'form': form })
@@ -35,14 +35,14 @@ class BuildingListView(RequiredLoginView):
         return render(request, self.template_name, context)
 
 class BuildingDetailView(UserPassesTestMixin, RequiredLoginView):
-   
+
     template_name = 'building/detail.html'
 
-    def get(self, request, pk): 
+    def get(self, request, pk):
         context = { 'building': self.object }
 
         return render(request, self.template_name, context)
-   
+
     def test_func(self):
         self.object = get_object_or_404(Building, id = self.kwargs['pk'])
         return self.object.creator_id == self.request.user.id
@@ -56,7 +56,7 @@ class BuildingUpdateView(RequiredLoginView):
             'form' : BuildingForm(instance = object)
         }
         return render(request, self.template_name, context)
-      
+
     def post(self, request, pk):
        object = get_object_or_404(Building, pk = pk)
        form = BuildingForm(request.POST, instance = object)
@@ -79,4 +79,4 @@ class SendEmailView(RequiredLoginView):
       email = EmailMultiAlternatives(subject, "",'', [self.request.user.email])
       email.attach_alternative(body, "text/html")
       email.send()
-      return redirect('building_list')         
+      return redirect('building_list')
